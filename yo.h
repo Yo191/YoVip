@@ -358,8 +358,7 @@ def myhelp():
 ☜❤☞คำสั่ง3 ◄ ► คำสั่งตั้งค่า
 ☜❤☞คำสั่ง4 ◄ ► คำสั่งมีเดีย
 ☜❤☞คำสั่ง5 ◄ ► คำสั่งสิริ
-☜❤☞คำสั่ง6 ◄ ► คำสั่งแปลภาษา
-☜❤☞"""
+☜❤☞คำสั่ง6 ◄ ► คำสั่งแปลภาษา """
     return myHelp
 
 def listgrup():
@@ -401,7 +400,12 @@ def listgrup():
 ❤☞ล้างแบน @
 ❤☞เตะแบน
 ❤☞เช็คไอดี
-❤☞꧁❀のุʨҨ₪ิ७ℓখ็πখี่❀꧂"""
+❤☞ดำ  แบนคท
+❤☞ขาว แบนคท
+❤☞คทดำ
+╔─────┅═ই۝ई═┅─────
+╠   ꧁❀のุʨҨ₪ิ७ℓখ็πখี่❀꧂
+╚─────┅═ই۝ई═┅───── """
     return listGrup
 
 def socmedia():
@@ -422,7 +426,9 @@ def socmedia():
 ❤☞ไอจี 
 ❤☞เวลา
 ❤☞ขอหื่น
-❤☞꧁❀のุʨҨ₪ิ७ℓখ็πখี่❀꧂"""
+╔─────┅═ই۝ई═┅─────
+╠   ꧁❀のุʨҨ₪ิ७ℓখ็πখี่❀꧂
+╚─────┅═ই۝ई═┅───── """
     return socMedia
 
 def helpset():
@@ -466,6 +472,9 @@ def helpset():
 ❤☞ปิดบอท
 ❤☞แบน @
 ❤☞ปลด @
+❤☞ดำ  แบนคท
+❤☞ขาว แบนคท
+❤☞คทดำ
 ❤☞เลียนแบบ @
 ❤☞ยกเลิก @
 ❤☞Nutmic on/off
@@ -474,7 +483,9 @@ def helpset():
 ❤☞ชื่อ;
 ❤☞ตัส;
 ❤☞Spam on จำนวน ข้อความ
-❤☞꧁❀のุʨҨ₪ิ७ℓখ็πখี่❀꧂ """
+╔─────┅═ই۝ई═┅─────
+╠   ꧁❀のุʨҨ₪ิ७ℓখ็πখี่❀꧂
+╚─────┅═ই۝ई═┅───── """
     return helpSet
 
 def helpsetting():
@@ -487,7 +498,7 @@ def helpsetting():
 ❤☞เปิดออกแชท ↔ ปิดออกแชท
 ❤☞เปิดอ่าน ↔ ปิดอ่าน
 ❤☞เปิดมุด ↔ ปิดมุด
-❤☞ติ้ก on ↔ ติ้ก off
+❤☞เปิดติ้ก ↔ ปิดติ้ก
 ❤☞เปิดเสือก ↔ ปิดเสือก
 ❤☞เปิดแทค ↔ ปิดแทค
 ❤☞เปิดแทค2 ↔ ปิดแทค2
@@ -537,7 +548,9 @@ def helptexttospeech():
 ❤☞ sr : เซอเบียร์
 ❤☞ th : ไทย
 ❤☞ vi : เวียดนาม
-╰═꧁❀のุʨҨ₪ิ७ℓখ็πখี่❀꧂
+╔─────┅═ই۝ई═┅─────
+╠   ꧁❀のุʨҨ₪ิ७ℓখ็πখี่❀꧂
+╚─────┅═ই۝ई═┅─────
 
 「วิธีใช้ : พูด พี่คะหนูเงี่ยน」"""
     return helpTextToSpeech
@@ -577,7 +590,9 @@ def helplanguange():
 ❤☞ ru : รัสเซีย
 ❤☞ th : ไทย
 ❤☞ zu : ซูลู
-❤☞꧁❀のุʨҨ₪ิ७ℓখ็πখี่❀꧂ »
+╔─────┅═ই۝ई═┅─────
+╠   ꧁❀のุʨҨ₪ิ७ℓখ็πখี่❀꧂
+╚─────┅═ই۝ई═┅───── »
  
 「วิธีใช้ : Tr-th ตามด้วยคำที่จะแปล」"""
     return helpLanguange
@@ -660,6 +675,48 @@ def lineBot(op):
                                          line.sendText(msg.to,"😧ตรวจพบข้อผิดพลาดที่ไม่ทราบสาเหตุ😩อาจเป็นได้ว่าบัญชีของคุณถูกแบนเชิญ😨")
                                          settings["winvite"] = False
                                          break
+
+        if op.type == 25:
+            msg = op.message
+            if msg.contentType == 13:
+               if settings["wblack"] == True:
+                    if msg.contentMetadata["mid"] in settings["commentBlack"]:
+                        line.sendText(msg.to,"รับทราบ")
+                        settings["wblack"] = False
+                    else:
+                        settings["commentBlack"][msg.contentMetadata["mid"]] = True
+                        settings["wblack"] = False
+                        line.sendText(msg.to,"decided not to comment")
+
+               elif settings["dblack"] == True:
+                   if msg.contentMetadata["mid"] in settings["commentBlack"]:
+                        del settings["commentBlack"][msg.contentMetadata["mid"]]
+                        line.sendText(msg.to,"ลบจากรายการที่ถูกแบนแล้ว")
+                        settings["dblack"] = False
+
+                   else:
+                        settings["dblack"] = False
+                        line.sendText(msg.to,"Tidak Ada Dalam Daftar Blacklist")
+               elif settings["wblacklist"] == True:
+                 if msg._from in admin: 
+                   if msg.contentMetadata["mid"] in settings["blacklist"]:
+                        line.sendText(msg.to,"Sudah Ada")
+                        settings["wblacklist"] = False
+                   else:
+                        settings["blacklist"][msg.contentMetadata["mid"]] = True
+                        settings["wblacklist"] = False
+                        line.sendText(msg.to,"เพิ่มบัญชีนี้ในรายการสีดำเรียบร้อยแล้ว")
+
+               elif settings["dblacklist"] == True:
+                 if msg._from in admin: 
+                   if msg.contentMetadata["mid"] in settings["blacklist"]:
+                        del settings["blacklist"][msg.contentMetadata["mid"]]
+                        line.sendText(msg.to,"เพิ่มบัญชีนี้ในรายการสีขาวเรียบร้อยแล้ว")
+                        settings["dblacklist"] = False
+
+                   else:
+                        settings["dblacklist"] = False
+                        line.sendText(msg.to,"Tidak Ada Dalam Da ftar Blacklist")                                         
                                          
         if op.type == 25:
             msg = op.message
@@ -763,8 +820,8 @@ def lineBot(op):
                     except Exception as e:
                         line.sendMessage(msg.to, str(e))
 #========================
-                elif "ํYo " in msg.text:
-                        vkick0 = msg.text.replace("Yo ","")
+                elif "ํเตะ " in msg.text:
+                        vkick0 = msg.text.replace("เตะ ","")
                         vkick1 = vkick0.rstrip()
                         vkick2 = vkick1.replace("@","")
                         vkick3 = vkick2.rstrip()
@@ -889,10 +946,10 @@ def lineBot(op):
                         line.sendMessage(to, str(ret_))
                     except Exception as e:
                         line.sendMessage(msg.to, str(e))
-                elif text.lower() == 'บล็อค on':
+                elif text.lower() == 'เปิดบล็อค':
                     settings["autoAdd"] = True
                     line.sendMessage(to, "❥เปิดไช้งาน ออโต้บล็อค ")
-                elif text.lower() == 'บล็อค off':
+                elif text.lower() == 'ปิดบล็อค':
                     settings["autoAdd"] = False
                     line.sendMessage(to, "❥ปิด ออโต้บล็อค ")
                 elif text.lower() == 'เปิดเข้า':
@@ -922,22 +979,22 @@ def lineBot(op):
                                 line.sendText(msg.to,str(settings["eror"]))
                         else:
                                 line.sendText(msg.to,"Bizarre ratings")					
-                elif text.lower() == 'แชท on':
+                elif text.lower() == 'เปิดออกแชท':
                     settings["autoLeave"] = True
                     line.sendMessage(to, "❥ออกแชทรวมอัตโนมัติ ")
-                elif text.lower() == 'แชท off':
+                elif text.lower() == 'ปิดออกแชท':
                     settings["autoLeave"] = False
                     line.sendMessage(to, "❥ปิดออกแชทรวม ")
-                elif text.lower() == 'อ่าน on':
+                elif text.lower() == 'เปิดอ่าน':
                     settings["autoRead"] = True
                     line.sendMessage(to, "❥อ่านแชท อัตโนมัติ ")
-                elif text.lower() == 'อ่าน off':
+                elif text.lower() == 'ปิดอ่าน':
                     settings["autoRead"] = False
                     line.sendMessage(to, "❥ปิดอ่านแชทอัตโนมัติ ")
-                elif text.lower() == 'ติ้ก on':
+                elif text.lower() == 'เปิดติ้ก':
                     settings["checkSticker"] = True
                     line.sendMessage(to, "❥เปิดระบบเช็คสติ้กเกอร์ ")
-                elif text.lower() == 'ติ้ก off':
+                elif text.lower() == 'ปิดติ้ก':
                     settings["checkSticker"] = False
                     line.sendMessage(to, "❥ปิดระบบเช็คสติ้กเกอร์ ")
                 elif text.lower() == 'เปิดมุด':
@@ -3656,7 +3713,22 @@ def lineBot(op):
                             line.sendMessage(msg.to,"ปิดป้องกันบุคคลภายนอกเข้ากลุ่ม❋")
                         else:
                             line.sendMessage(msg.to,"ปิดป้องกันบุคคลภายนอกเข้ากลุ่ม❋")
-
+#=============COMMAND KICKER===========================#
+                elif msg.text in ["ดำ"]:
+                  if msg._from in admin: 
+                    settings["wblacklist"] = True
+                    line.sendMessage(msg.to,"กรุณาส่งคอทแทค")
+                elif msg.text in [".ขาว"]:
+                  if msg._from in admin: 
+                    settings["dblacklist"] = True
+                    line.sendMessage(msg.to,"กรุณาส่งคอทแทค")
+                elif msg.text.lower() == "คทดำ":
+                    if msg._from in lineMID:
+                        if settings["blacklist"] == []:
+                            line.sendMessage(to, "Nothing boss")
+                        else:
+                            for bl in settings["blacklist"]:
+                                line.sendMessage(to, text=None, contentMetadata={'mid': bl}, contentType=13)
 #==============FINNISHING PROTECT========================#
                 elif msg.text.lower() == 'เปิดต้อนรับ':
                         if settings["Wc"] == True:
