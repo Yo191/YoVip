@@ -1,2 +1,0 @@
-# Yo191
-SELFBOT LINE Yo PY3 login
